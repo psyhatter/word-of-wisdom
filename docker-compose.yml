@@ -1,0 +1,16 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/server/Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: server
+    restart: always
+
+  client:
+    depends_on:
+      - server
+    build:
+      context: .
+      dockerfile: ./dockerfiles/client/Dockerfile
